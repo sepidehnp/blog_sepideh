@@ -25,7 +25,9 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Spd\\Home\\": "Modules/Spd/Home"
+            "Spd\\Home\\": "Modules/Spd/Home",
+            "Spd\\User\\": "Modules/Spd/User",
+            "Spd\\Auth\\": "Modules/Spd/Auth"
         }
     },
     "autoload-dev": {

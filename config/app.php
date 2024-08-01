@@ -186,6 +186,8 @@ return [
          * Module Service Providers...
          */
         Spd\Home\Providers\HomeServiceProvider::class,
+        Spd\User\Providers\UserServiceProvider::class,
+        Spd\Auth\Providers\AuthServiceProvider::class,
 
         /*
          * Package Service Providers...
