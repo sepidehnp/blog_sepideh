@@ -27,7 +27,8 @@
             "Database\\Seeders\\": "database/seeders/",
             "Spd\\Home\\": "Modules/Spd/Home",
             "Spd\\User\\": "Modules/Spd/User",
-            "Spd\\Auth\\": "Modules/Spd/Auth"
+            "Spd\\Auth\\": "Modules/Spd/Auth",
+            "Spd\\Panel\\": "Modules/Spd/Panel"
         }
     },
     "autoload-dev": {

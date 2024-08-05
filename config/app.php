@@ -188,6 +188,7 @@ return [
         Spd\Home\Providers\HomeServiceProvider::class,
         Spd\User\Providers\UserServiceProvider::class,
         Spd\Auth\Providers\AuthServiceProvider::class,
+        Spd\Panel\Providers\PanelServiceProvider::class,
 
         /*
          * Package Service Providers...
