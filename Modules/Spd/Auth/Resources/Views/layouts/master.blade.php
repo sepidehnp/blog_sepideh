@@ -6,7 +6,7 @@
         <title>@yield('title') | {{ config('app.name') }}</title>
 
         @include('Auth::section.css') {{-- Load CSS File --}}
-    </head>
+    </head> 
     <body class="authentication-bg">
 
         <div class="home-btn d-none d-sm-block">
