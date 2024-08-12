@@ -189,13 +189,15 @@ return [
         Spd\User\Providers\UserServiceProvider::class,
         Spd\Auth\Providers\AuthServiceProvider::class,
         Spd\Panel\Providers\PanelServiceProvider::class,
+        Spd\Category\Providers\CategoryServiceProvider::class,
+
 
         /*
          * Package Service Providers...
          */
 
         /*
-         * Application Service Providers...
+         * Application Service Providers... 
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,

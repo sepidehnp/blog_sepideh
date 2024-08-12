@@ -2,10 +2,8 @@
 namespace Spd\User\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Spd\User\Http\Requests\UserRequest;
 use Spd\User\Http\Requests\UserUpdateRequest;
-use Spd\User\Models\User; 
 use Spd\User\Repositories\UserRepo;
 use Spd\User\Services\UserService;
 

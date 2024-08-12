@@ -30,7 +30,8 @@
             "Spd\\Home\\": "Modules/Spd/Home",
             "Spd\\User\\": "Modules/Spd/User",
             "Spd\\Auth\\": "Modules/Spd/Auth",
-            "Spd\\Panel\\": "Modules/Spd/Panel"
+            "Spd\\Panel\\": "Modules/Spd/Panel",
+            "Spd\\Category\\": "Modules/Spd/Category"
         }
     },
     "autoload-dev": {

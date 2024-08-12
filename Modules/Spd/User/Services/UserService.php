@@ -2,7 +2,7 @@
 
 namespace Spd\User\Services;
 
-use Illuminate\Support\Facades\Hash;
+
 use Spd\User\Models\User;
 
 class UserService
