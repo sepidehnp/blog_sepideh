@@ -2,6 +2,8 @@
 namespace Spd\User\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Spd\Role\Repositories\RoleRepo;
+use Spd\User\Http\Requests\AddRoleRequest;
 use Spd\User\Http\Requests\UserRequest;
 use Spd\User\Http\Requests\UserUpdateRequest;
 use Spd\User\Repositories\UserRepo;
@@ -54,4 +56,29 @@ class UserController extends Controller
 
         return to_route('users.index')->with(['success_delete' => 'کاربر با موفقیت حذف شد']);
     }
+    public function addRole($user_id, RoleRepo $roleRepo)
+    {
+        $roles = $roleRepo->index()->get();
+        return view('User::add-roles', compact(['user_id', 'roles']));
+    }
+
+    public function addRoleStore(AddRoleRequest $request, $userId)
+    {
+        $user = $this->repo->findById($userId);
+        $this->service->addRole($request->role, $user);
+
+        alert()->success('اد کردن مقام به کاربر', 'عملیات با موفقیت انجام شد');
+        return to_route('users.index');
+    }
+
+    public function removeRole($userId, $roleId, RoleRepo $roleRepo)
+    {
+        $user = $this->repo->findById($userId);
+        $role = $roleRepo->findById($roleId);
+        $this->service->deleteRole($user, $role->name);
+
+        alert()->success('حذف کردن مقام', 'عملیات با موفقیت انجام شد');
+        return to_route('users.index');
+    }
 }
+

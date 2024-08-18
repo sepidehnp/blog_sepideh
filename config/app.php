@@ -190,14 +190,15 @@ return [
         Spd\Auth\Providers\AuthServiceProvider::class,
         Spd\Panel\Providers\PanelServiceProvider::class,
         Spd\Category\Providers\CategoryServiceProvider::class,
+        Spd\Role\Providers\RoleServiceProvider::class,
 
 
         /*
          * Package Service Providers...
          */
-
+        Spatie\Permission\PermissionServiceProvider::class,
         /*
-         * Application Service Providers... 
+         * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
@@ -220,6 +221,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
     ])->toArray(),
 
 ];
