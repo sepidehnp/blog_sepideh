@@ -2,9 +2,12 @@
 
 namespace Spd\Panel\Providers;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-
+use Spd\Panel\Models\Panel;
+use Spd\Panel\Policies\PanelPolicy;
+ 
 class PanelServiceProvider extends ServiceProvider
 {
 
@@ -13,8 +16,10 @@ class PanelServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../Resources/Views/', 'Panel');
         $this->mergeConfigFrom(__DIR__ . '/../Config/config.php', 'panelConfig');
         Route::middleware('web')->namespace('Spd\Panel\Http\Controllers')->group(__DIR__ . '/../Routes/panel_routes.php');
+
+        Gate::policy(Panel::class, PanelPolicy::class);
     }
-    
+
     public function boot()
     {
         $this->app->booted(static function () {

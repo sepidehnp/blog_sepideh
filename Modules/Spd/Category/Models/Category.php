@@ -2,9 +2,10 @@
 
 namespace Spd\Category\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Spd\User\Models\User;
+use Spd\Article\Models\Article;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
@@ -32,6 +33,12 @@ class Category extends Model
     {
         return $this->hasMany(__CLASS__, 'parent_id');
     }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
 
     public function getParent()
     {

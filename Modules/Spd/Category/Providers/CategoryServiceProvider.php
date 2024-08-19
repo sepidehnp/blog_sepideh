@@ -2,8 +2,11 @@
 
 namespace Spd\Category\Providers;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Spd\Category\Models\Category;
+use Spd\Category\Policies\CategoryPolicy;
 
 class CategoryServiceProvider extends ServiceProvider
 {
@@ -13,7 +16,9 @@ class CategoryServiceProvider extends ServiceProvider
          $this->loadViewsFrom(__DIR__ . '/../Resources/Views/', 'Category');
          $this->loadJsonTranslationsFrom(__DIR__ . '/../Resources/Lang');
          Route::middleware('web')->namespace('Spd\Category\Http\Controllers')->group(__DIR__ . '/../Routes/category_routes.php');
-    }
+
+         Gate::policy(Category::class, CategoryPolicy::class);
+        }
 
     public function boot()
     {

@@ -191,6 +191,7 @@ return [
         Spd\Panel\Providers\PanelServiceProvider::class,
         Spd\Category\Providers\CategoryServiceProvider::class,
         Spd\Role\Providers\RoleServiceProvider::class,
+        Spd\Article\Providers\ArticleServiceProvider::class,
 
 
         /*

@@ -21,10 +21,7 @@ class CategoryRepo
         return $this->query()->where('id', $id)->delete();
     }
 
-    private function query(): \Illuminate\Database\Eloquent\Builder
-    {
-        return Category::query();
-    }
+
 
     public function changeStatus($category)
     {
@@ -32,5 +29,15 @@ class CategoryRepo
             return $category->update(['status' => Category::STATUS_INACTIVE]);
         }
         return $category->update(['status' => Category::STATUS_ACTIVE]);
+    }
+
+    public function getActiveCategories()
+    {
+        return $this->query()->where('status', Category::STATUS_ACTIVE)->latest();
+    }
+    
+    private function query(): \Illuminate\Database\Eloquent\Builder
+    {
+        return Category::query();
     }
 }
