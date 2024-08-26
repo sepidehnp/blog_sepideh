@@ -36,7 +36,8 @@
             "Spd\\Panel\\": "Modules/Spd/Panel",
             "Spd\\Category\\": "Modules/Spd/Category",
             "Spd\\Role\\": "Modules/Spd/Role/",
-            "Spd\\Article\\": "Modules/Spd/Article/"
+            "Spd\\Article\\": "Modules/Spd/Article/",
+            "Spd\\Comment\\": "Modules/Spd/Comment/"
 
         }
     },

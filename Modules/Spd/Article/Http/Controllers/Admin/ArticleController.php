@@ -2,7 +2,6 @@
 namespace Spd\Article\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Spd\Article\Http\Requests\ArticleRequest;
 use Spd\Article\Models\Article;
 use Spd\Article\Repositories\ArticleRepo;
@@ -98,7 +97,7 @@ class ArticleController extends Controller
         return to_route('articles.index');
     }
 
-    
+
     public function changeStatus($id)
     {
         $article = $this->repo->findById($id);

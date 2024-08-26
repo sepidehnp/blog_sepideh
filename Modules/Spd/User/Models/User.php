@@ -4,6 +4,7 @@ namespace Spd\User\Models;
 
  use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Spd\Article\Models\Article;
+use Spd\Comment\Models\Comment;
 use Laravel\Sanctum\HasApiTokens;
 use Spd\Category\Models\Category;
 use Overtrue\LaravelLike\Traits\Liker;
@@ -52,5 +53,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function articles()
     {
         return $this->hasMany(Article::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
