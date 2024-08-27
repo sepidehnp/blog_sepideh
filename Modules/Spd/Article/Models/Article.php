@@ -44,12 +44,17 @@ class Article extends Model implements Viewable
          return $this->belongsTo(Category::class, 'category_id');
      }
 
-     
+
      public function cssStatus()
      {
          if ($this->status === self::STATUS_ACTIVE) return 'success';
          else if ($this->status === self::STATUS_INACTIVE) return 'danger';
          else return 'warning';
      }
+
+     public function path()
+    {
+        return route('articles.details', $this->slug);
+    }
  }
 

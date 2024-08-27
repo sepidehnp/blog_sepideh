@@ -21,6 +21,20 @@ class ArticleRepo
         return $this->query()->where('id', $id)->delete();
     }
 
+    public function findBySlug($slug)
+    {
+        return $this->query()->whereSlug($slug)->first();
+    }
+ // Home Query
+    public function relatedArticles($categoryId, $id)
+    {
+        return $this->query()
+            ->where('category_id', $categoryId)
+            ->whereStatus(Article::STATUS_ACTIVE)
+            ->where('id', '!=', $id);
+    }
+
+
     private function query()
     {
         return Article::query();

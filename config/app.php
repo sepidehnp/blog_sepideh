@@ -192,7 +192,8 @@ return [
         Spd\Category\Providers\CategoryServiceProvider::class,
         Spd\Role\Providers\RoleServiceProvider::class,
         Spd\Article\Providers\ArticleServiceProvider::class,
-        Spd\Comment\Providers\CommentServiceProvider::class, 
+        Spd\Comment\Providers\CommentServiceProvider::class,
+        Spd\Share\Providers\ShareServiceProvider::class,
 
 
         /*

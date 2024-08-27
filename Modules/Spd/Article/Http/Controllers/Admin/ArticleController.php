@@ -1,12 +1,13 @@
 <?php
 namespace Spd\Article\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Spd\Article\Http\Requests\ArticleRequest;
 use Spd\Article\Models\Article;
-use Spd\Article\Repositories\ArticleRepo;
+use App\Http\Controllers\Controller;
+use Spd\Share\Repositories\ShareRepo;
 use Spd\Article\Services\ArticleService;
+use Spd\Article\Repositories\ArticleRepo;
 use Spd\Category\Repositories\CategoryRepo;
+use Spd\Article\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller
 {
@@ -51,7 +52,8 @@ class ArticleController extends Controller
 
         $this->service->store($request, auth()->id(), $imageName, $imagePath);
 
-        alert()->success('ساخت مقاله', 'عملیات با موفقیت انجام شد');
+      //  alert()->success('ساخت مقاله', 'عملیات با موفقیت انجام شد');
+      ShareRepo::successMessage('ساخت مقاله');
         return to_route('articles.index');
     }
 
@@ -79,7 +81,8 @@ class ArticleController extends Controller
 
         $this->service->update($request, $id, $imageName, $imagePath);
 
-        alert()->success('ویرایش مقاله', 'عملیات با موفقیت انجام شد');
+      //  alert()->success('ویرایش مقاله', 'عملیات با موفقیت انجام شد');
+      ShareRepo::successMessage('ویرایش مقاله');
         return to_route('articles.index');
     }
 
@@ -93,7 +96,8 @@ class ArticleController extends Controller
         $this->service->deleteImage($article);
         $this->repo->delete($id);
 
-        alert()->success('حذف مقاله', 'عملیات با موفقیت انجام شد');
+       // alert()->success('حذف مقاله', 'عملیات با موفقیت انجام شد');
+       ShareRepo::successMessage('حذف مقاله');
         return to_route('articles.index');
     }
 
@@ -103,7 +107,8 @@ class ArticleController extends Controller
         $article = $this->repo->findById($id);
         $this->service->changeStatus($article);
 
-        alert()->success('تغییر وضعیت مقاله', 'عملیات با موفقیت انجام شد');
+      //  alert()->success('تغییر وضعیت مقاله', 'عملیات با موفقیت انجام شد');
+      ShareRepo::successMessage('تغییر وضعیت مقاله');
         return to_route('articles.index');
     }
 

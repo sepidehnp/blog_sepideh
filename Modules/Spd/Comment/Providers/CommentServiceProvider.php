@@ -20,6 +20,6 @@ class CommentServiceProvider extends ServiceProvider
             'url'   => route('comments.index'),
             'title' => 'نظرات',
             'icon'  => 'comment',
-        ]);
+        ]); 
     }
 }
