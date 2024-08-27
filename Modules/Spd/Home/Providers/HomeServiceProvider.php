@@ -4,6 +4,7 @@ namespace Spd\Home\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Spd\Category\Repositories\CategoryRepo;
 
 class HomeServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,12 @@ class HomeServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        view()->composer(['Home::section.footer', 'Home::section.header'], static function ($view) {
+            $categoryRepo = new CategoryRepo;
+            $categories = $categoryRepo->getActiveCategories()->get();
+
+            $view->with(['categories' => $categories]);
+        });
         config()->set('panelConfig.menus.home', [
             'url'   => route('home.index'),
             'title' => 'سایت اصلی',
