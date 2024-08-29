@@ -12,7 +12,7 @@
       {{--        @include('Home::section.preloader')--}}
         <div class="main-wrap">
             <!--Offcanvas sidebar-->
-            @include('Home::section.sidebar')
+            @include('Home::section.sidebar') 
 
 
   <!-- Main Header -->
@@ -26,5 +26,6 @@
 </div>
 <div class="dark-mark"></div>
 @include('Home::section.js')
+@include('sweetalert::alert') {{-- Load Sweet Alert --}}
 </body>
 </html>

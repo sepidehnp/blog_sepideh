@@ -2,15 +2,10 @@
 
 namespace Spd\Article\Http\Controllers\Home;
 
-use Spd\Article\Models\Article;
 use Spd\Home\Repositories\HomeRepo;
 use App\Http\Controllers\Controller;
-use Spd\Share\Repositories\ShareRepo;
-use Spd\Article\Services\ArticleService;
 use Spd\Article\Repositories\ArticleRepo;
 use Spd\Comment\Repositories\CommentRepo;
-use Spd\Category\Repositories\CategoryRepo;
-use Spd\Article\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller
 {
@@ -27,7 +22,7 @@ class ArticleController extends Controller
 //
 //        return view('Article::Admin.index', compact('articles'));
 //    }
- 
+
     public function home(CommentRepo $commentRepo)
     {
         $articles = $this->repo->home()->paginate(6);
@@ -38,13 +33,14 @@ class ArticleController extends Controller
     }
 
 
-      public function details($slug, HomeRepo $homeRepo)
+    public function details($slug, HomeRepo $homeRepo, CommentRepo $commentRepo)
     {
         $article = $this->repo->findBySlug($slug);
 
         if (is_null($article)) abort(404);
         $relatedArticles = $this->repo->relatedArticles($article->category_id, $article->id)->limit(3)->get();
+        $latestComments = $commentRepo->getLatestComments()->limit(3)->get();
 
-        return view('Article::Home.details', compact(['article', 'relatedArticles', 'homeRepo']));
+        return view('Article::Home.details', compact(['article', 'relatedArticles', 'homeRepo', 'latestComments']));
     }
 }

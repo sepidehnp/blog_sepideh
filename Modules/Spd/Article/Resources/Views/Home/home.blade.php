@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="post-aside-style-2">
                                     <ul class="list-post">
-                                        @foreach ($viewsArticles as $article)
+                                        @foreach ($viewsArticles as $article) 
                                             <li class="mb-30 wow fadeIn  animated" style="visibility: visible; animation-name: fadeIn;">
                                                 <div class="d-flex">
                                                     <div class="post-thumb d-flex ml-15 border-radius-5 img-hover-scale">

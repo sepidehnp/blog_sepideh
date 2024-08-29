@@ -5,8 +5,9 @@
                 <div class="img-hover-scale border-radius-10">
 
                     <a href="{{ $article->path() }}">
-                        <img class="border-radius-10" src="{{ $article->imagePath }}" alt="{{ $article->title }}">
-                    </a>
+                        <img class="border-radius-10 style-article-img-small" src="{{ $article->imagePath }}"
+                        alt="{{ $article->title }}">
+                     </a>
                 </div>
                 <h6 class="post-title pr-5 pl-5 mb-10 mt-15 text-limit-2-row">
                     <a href="{{ $article->path() }}">{{ $article->title }}</a>

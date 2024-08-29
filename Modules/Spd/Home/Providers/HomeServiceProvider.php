@@ -4,6 +4,7 @@ namespace Spd\Home\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Spd\Comment\Repositories\CommentRepo;
 use Spd\Category\Repositories\CategoryRepo;
 
 class HomeServiceProvider extends ServiceProvider
@@ -25,6 +26,14 @@ class HomeServiceProvider extends ServiceProvider
 
             $view->with(['categories' => $categories]);
         });
+
+        view()->composer(['Home::parts.sidebar_left'], static function ($view) {
+            $commentRepo = new CommentRepo;
+            $latestComments = $commentRepo->getLatestComments()->limit(4)->get();
+
+            $view->with(['latestComments' => $latestComments]);
+        });
+
         config()->set('panelConfig.menus.home', [
             'url'   => route('home.index'),
             'title' => 'سایت اصلی',

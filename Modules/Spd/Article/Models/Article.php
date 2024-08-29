@@ -5,6 +5,7 @@ namespace Spd\Article\Models;
 
 use Spd\User\Models\User;
 use Spd\Category\Models\Category;
+use Spd\Comment\Trait\HaveComments;
 use Illuminate\Database\Eloquent\Model;
 use Overtrue\LaravelLike\Traits\Likeable;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
@@ -15,7 +16,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Article extends Model implements Viewable
 {
 
-    use HasFactory, InteractsWithViews, Likeable;
+    use HasFactory, InteractsWithViews, Likeable, HaveComments;
 
     protected $fillable = [
         'user_id', 'category_id', 'title', 'slug', 'time_to_read', 'imageName', 'imagePath', 'score', 'status',
@@ -56,5 +57,13 @@ class Article extends Model implements Viewable
     {
         return route('articles.details', $this->slug);
     }
+
+    //    public function getCommentCount()
+//    {
+//        if (is_null($this->commets)) return 0;
+//
+//        return $this->comments->count();
+//    }
+
  }
 

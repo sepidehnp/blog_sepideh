@@ -9,4 +9,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], static function ($ro
     $router->delete('users/remove/{userId}/role/{roleId}', 'UserController@removeRole')->name('users.remove.role');
     $router->resource('users', 'UserController', ['except' => 'show']);
 });
- 
+
+Route::group(['namespace' => 'Home'], static function ($router) {
+    $router->get('authors', 'UserController@authors')->name('users.authors');
+    $router->get('authors/{name}', 'UserController@author')->name('users.author');
+});
