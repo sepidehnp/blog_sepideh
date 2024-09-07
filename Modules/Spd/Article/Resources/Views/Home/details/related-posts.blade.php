@@ -15,7 +15,7 @@
                             </a>
                         </div>
                         <h5 class="post-title mb-15">
-                            <a href="{{ $article->path() }}">{{ Illuminate\Support\Str::limit($article->title, 25) }}</a>
+                            <a href="{{ $article->path() }}">{{ Illuminate\Support\Str::limit($article->title, 20) }}</a>
                         </h5>
                         <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase mb-10">
                             <span class="post-by">توسط <a href="author.html">{{ $article->user->name }}</a></span>

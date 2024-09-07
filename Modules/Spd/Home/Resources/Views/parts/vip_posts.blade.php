@@ -10,7 +10,7 @@
                      </a>
                 </div>
                 <h6 class="post-title pr-5 pl-5 mb-10 mt-15 text-limit-2-row">
-                    <a href="{{ $article->path() }}">{{ $article->title }}</a>
+                    <a href="{{ $article->path() }}"> {{ Illuminate\Support\Str::limit($article->title, 23) }}</a>
                 </h6>
                 <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase pr-5 pb-15">
                     <span class="post-by">توسط <a href="author.html">{{ $article->user->name }}</a></span>

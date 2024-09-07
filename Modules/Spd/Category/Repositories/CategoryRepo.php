@@ -30,12 +30,19 @@ class CategoryRepo
         }
         return $category->update(['status' => Category::STATUS_ACTIVE]);
     }
+    
+     // Home Query
 
     public function getActiveCategories()
     {
         return $this->query()->where('status', Category::STATUS_ACTIVE)->latest();
     }
-    
+
+    public function findBySlug($slug)
+    {
+        return $this->query()->where('status', Category::STATUS_ACTIVE)->whereSlug($slug)->first();
+    }
+
     private function query(): \Illuminate\Database\Eloquent\Builder
     {
         return Category::query();

@@ -42,7 +42,7 @@
                                                         </div>
                                                         <h5 class="post-title mb-15">
                                                             <a href="{{ $article->path() }}">
-                                                                {{ Illuminate\Support\Str::limit($article->title, 75) }}
+                                                                {{ Illuminate\Support\Str::limit($article->title,41) }}
                                                             </a>
                                                         </h5>
                                                         <p class="post-exerpt font-medium text-muted mb-30">
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="post-aside-style-2">
                                     <ul class="list-post">
-                                        @foreach ($viewsArticles as $article) 
+                                        @foreach ($viewsArticles as $article)
                                             <li class="mb-30 wow fadeIn  animated" style="visibility: visible; animation-name: fadeIn;">
                                                 <div class="d-flex">
                                                     <div class="post-thumb d-flex ml-15 border-radius-5 img-hover-scale">

@@ -34,4 +34,41 @@ class UserService
     {
         return $user->removeRole($role);
     }
+
+    public function updateProfile($request, $id, $imageName, $imagePath)
+    {
+
+        $data= [
+            'name' => $request->name,
+            'email' => $request->email,
+            'telegram' => $request->telegram,
+            'linkedin' => $request->linkedin,
+            'twitter' => $request->twitter,
+            'instagram' => $request->instagram,
+            'bio' => $request->bio,
+            'imageName' => $imageName,
+            'imagePath' => $imagePath,
+        ];
+        if($request->password){
+            $data['password']=bcrypt($request->password);
+        }
+
+        return User::query()->where('id',$id)->update($data);
+        
+        // return User::query()->where('id', $id)->update([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => $request->has('password') ? bcrypt($request->password):$user->password,
+        //     'telegram' => $request->telegram,
+        //     'linkedin' => $request->linkedin,
+        //     'twitter' => $request->twitter,
+        //     'instagram' => $request->instagram,
+        //     'bio' => $request->bio,
+        //     'imageName' => $imageName,
+        //     'imagePath' => $imagePath,
+        // ]);
+    }
 }
+
+
+
