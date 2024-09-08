@@ -2,7 +2,7 @@
 
 namespace Spd\Category\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Spd\Share\Http\Controllers\Controller;
 use Spd\Category\Http\Requests\CategoryRequest;
 use Spd\Category\Models\Category;
 use Spd\Category\Repositories\CategoryRepo;
@@ -10,6 +10,7 @@ use Spd\Category\Services\CategoryService;
 
 class CategoryController extends Controller
 {
+    private string $class = Category::class;
     public CategoryRepo $repo;
     public CategoryService $service;
 
@@ -21,7 +22,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $this->authorize('index', Category::class);
+        $this->authorize('index', $this->class);
         $categories = $this->repo->index()->paginate(10);
 
         return view('Category::index', compact('categories'));
@@ -29,7 +30,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        $this->authorize('index', Category::class);
+        $this->authorize('index', $this->class);
         $categories = $this->repo->index()->get();
 
         return view('Category::create', compact('categories'));
@@ -37,7 +38,7 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
-        $this->authorize('index', Category::class);
+        $this->authorize('index', $this->class);
         $this->service->store($request);
 
         return to_route('categories.index')->with(['success_message' => 'دسته بندی با موفقیت ساخته شد']);
@@ -45,7 +46,7 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        $this->authorize('index', Category::class);
+        $this->authorize('index', $this->class);
         $category = $this->repo->findById($id);
         $categories = $this->repo->index()->where('id', '!=', $category->id)->get();
         return view('Category::edit', compact(['category', 'categories']));
@@ -54,7 +55,7 @@ class CategoryController extends Controller
 
     public function update(CategoryRequest $request, $id)
     {
-        $this->authorize('index', Category::class);
+        $this->authorize('index', $this->class);
         $this->service->update($request, $id);
 
         return to_route('categories.index')->with(['success_message' => 'دسته بندی با موفقیت ابدیت شد']);
@@ -62,7 +63,7 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        $this->authorize('index', Category::class);
+        $this->authorize('index', $this->class);
         $this->repo->delete($id);
 
         return to_route('categories.index')->with(['success_message' => 'دسته بندی با موفقیت حذف شد']);
@@ -70,7 +71,7 @@ class CategoryController extends Controller
 
     public function changeStatus($id)
     {
-        $this->authorize('index', Category::class);
+        $this->authorize('index', $this->class);
         $category = $this->repo->findById($id);
         $this->repo->changeStatus($category);
 

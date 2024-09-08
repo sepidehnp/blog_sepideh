@@ -3,9 +3,11 @@
 namespace Spd\Article\Http\Controllers\Home;
 
 use Spd\Home\Repositories\HomeRepo;
-use App\Http\Controllers\Controller;
+use Spd\Share\Http\Controllers\Controller;
+use Spd\Advertising\Models\Advertising;
 use Spd\Article\Repositories\ArticleRepo;
 use Spd\Comment\Repositories\CommentRepo;
+use Spd\Advertising\Repositories\AdvertisingRepo;
 
 class ArticleController extends Controller
 {
@@ -33,14 +35,17 @@ class ArticleController extends Controller
     }
 
 
-    public function details($slug, HomeRepo $homeRepo, CommentRepo $commentRepo)
+    public function details($slug, HomeRepo $homeRepo, CommentRepo $commentRepo, AdvertisingRepo $advertisingRepo)
     {
         $article = $this->repo->findBySlug($slug);
 
         if (is_null($article)) abort(404);
         $relatedArticles = $this->repo->relatedArticles($article->category_id, $article->id)->limit(3)->get();
         $latestComments = $commentRepo->getLatestComments()->limit(3)->get();
+        $adv = $advertisingRepo->getAdvByLocation(Advertising::LOCATION_DETAIL_ARTICLES)->latest()->first();
 
-        return view('Article::Home.details', compact(['article', 'relatedArticles', 'homeRepo', 'latestComments']));
+       return view('Article::Home.details', compact([
+            'article', 'relatedArticles', 'homeRepo', 'latestComments', 'adv'
+        ]));
     }
 }

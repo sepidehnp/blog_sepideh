@@ -2,7 +2,7 @@
 
 namespace Spd\Comment\Http\Controllers\Home;
 
-use App\Http\Controllers\Controller;
+use Spd\Share\Http\Controllers\Controller;
 use Spd\Comment\Http\Requests\CommentRequest;
 use Spd\Comment\Services\CommentService;
 use Spd\Share\Repositories\ShareRepo;

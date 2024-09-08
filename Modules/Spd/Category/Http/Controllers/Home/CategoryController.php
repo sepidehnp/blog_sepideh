@@ -2,7 +2,7 @@
 
 namespace Spd\Category\Http\Controllers\Home;
 
-use App\Http\Controllers\Controller;
+use Spd\Share\Http\Controllers\Controller;
 use Spd\Article\Repositories\ArticleRepo;
 use Spd\Category\Repositories\CategoryRepo;
 

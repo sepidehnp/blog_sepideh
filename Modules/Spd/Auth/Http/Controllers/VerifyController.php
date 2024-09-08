@@ -2,7 +2,7 @@
 
 namespace Spd\Auth\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Spd\Share\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 

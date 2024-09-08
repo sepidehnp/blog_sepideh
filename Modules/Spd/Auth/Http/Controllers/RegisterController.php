@@ -1,7 +1,7 @@
 <?php
 namespace Spd\Auth\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Spd\Share\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Registered;
 use Spd\Auth\Http\Requests\RegisterRequest;
 use Spd\Auth\Services\RegisterService;

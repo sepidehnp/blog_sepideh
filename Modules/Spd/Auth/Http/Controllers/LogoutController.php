@@ -2,7 +2,7 @@
 
 namespace Spd\Auth\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Spd\Share\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class LogoutController extends Controller

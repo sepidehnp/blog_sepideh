@@ -2,7 +2,7 @@
 
 namespace Spd\Auth\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Spd\Share\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Spd\Auth\Http\Requests\LoginRequest;
 
@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     public function view()
     {
-        return view('Auth::login'); 
+        return view('Auth::login');
     }
 
     public function login(LoginRequest $request)

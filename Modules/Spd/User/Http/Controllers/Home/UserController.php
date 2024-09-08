@@ -4,7 +4,7 @@ namespace Spd\User\Http\Controllers\Home;
 
 use Spd\Role\Models\Permission;
 use Spd\User\Services\UserService;
-use App\Http\Controllers\Controller;
+use Spd\Share\Http\Controllers\Controller;
 use Spd\Share\Services\ShareService;
 use Spd\Share\Repositories\ShareRepo;
 use Spd\User\Repositories\Home\UserRepo;

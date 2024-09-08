@@ -2,7 +2,7 @@
 namespace Spd\Article\Http\Controllers\Admin;
 
 use Spd\Article\Models\Article;
-use App\Http\Controllers\Controller;
+use Spd\Share\Http\Controllers\Controller;
 use Spd\Share\Services\ShareService;
 use Spd\Share\Repositories\ShareRepo;
 use Spd\Article\Services\ArticleService;
@@ -121,7 +121,7 @@ class ArticleController extends Controller
     {
         //
         if (!is_null($file)) {
-            [$imageName, $imagePath] = $this->service->uploadImage($file);
+            [$imageName, $imagePath] = ShareService::uploadImage($file, 'articles');
         }
         else {
             $imageName = $article->imageName;

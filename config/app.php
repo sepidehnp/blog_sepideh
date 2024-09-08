@@ -194,6 +194,7 @@ return [
         Spd\Article\Providers\ArticleServiceProvider::class,
         Spd\Comment\Providers\CommentServiceProvider::class,
         Spd\Share\Providers\ShareServiceProvider::class,
+        Spd\Advertising\Providers\AdvertisingServiceProvider::class,
 
 
         /*
