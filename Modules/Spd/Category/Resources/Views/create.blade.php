@@ -39,11 +39,19 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="status">وضعیت دسته بندی</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control @error('status') is-invalid @enderror" name="status">
+                                            {{-- <select class="form-control @error('status') is-invalid @enderror" name="status">
                                                 @foreach (Spd\Category\Models\Category::$statuses as $status)
                                                 <option value="{{ $status }}">@lang($status)</option>
                                                 @endforeach
-                                            </select>
+                                            </select> --}}
+
+                                            <x-panel-select name="status">
+                                                @foreach (Spd\Category\Models\Category::$statuses as $status)
+                                                    <option value="{{ $status }}">@lang($status)</option>
+                                                @endforeach
+
+                                            </x-panel-select>
+
                                             @error('status')
                                                 <br>
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -59,7 +67,7 @@
                                                 @foreach ($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                                 @endforeach
-                                            </select> 
+                                            </select>
                                             @error('parent_id')
                                                 <br>
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -78,7 +86,8 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-outline-success">ذخیره</button>
+                                    <x-panel-button/>
+                                    {{-- <button type="submit" class="btn btn-outline-success">ذخیره</button> --}}
                                 </form>
                             </div>
                         </div>
