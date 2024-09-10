@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Spd\Panel\Models\Panel;
 use Spd\Panel\Policies\PanelPolicy;
- 
+
 class PanelServiceProvider extends ServiceProvider
 {
 
@@ -28,6 +28,11 @@ class PanelServiceProvider extends ServiceProvider
                 'title' => 'پنل کاربری',
                 'icon'  => 'view-dashboard',
             ]);
+        });
+
+        view()->composer(['Panel::section.navbar'], static function ($view) {
+            $notifications = auth()->user()->unreadNotifications;
+            $view->with(['notifications' => $notifications]);
         });
     }
 }

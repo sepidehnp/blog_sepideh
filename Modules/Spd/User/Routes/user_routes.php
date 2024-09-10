@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Notification;
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], static function ($router) {
     $router->get('users/add/{userId}/role', 'UserController@addRole')->name('users.add.role');
@@ -15,4 +16,27 @@ Route::group(['namespace' => 'Home'], static function ($router) {
     $router->get('authors/{name}', 'UserController@author')->name('users.author');
     $router->get('profile', 'UserController@profile')->name('users.profile')->middleware('auth');
     $router->patch('profile', 'UserController@updateProfile')->name('users.update.profile')->middleware('auth');
+
+    $router->get('send/email', static function () {
+        dispatch(new Spd\User\Jobs\SendEmailToUserJob('milwad@gmail.com'));
+
+        return 'send';
+    });
+    $router->get('send/notifications', static function () {
+       Notification::send(auth()->user(), new Spd\User\Notifications\SendEmailToUserNotification);
+
+        return 'notif';
+    });
+    $router->get('mark/notifications', static function () {
+        auth()->user()->unreadNotifications->markAsRead();
+
+        \Spd\Share\Repositories\ShareRepo::successMessage(title: 'پیام ها با موفقیت خوانده شد');
+        return back();
+    })->name('mark.notifications');
+
+    $router->get('fire/event', static function () {
+        event(new Spd\User\Events\SendEmailToUserEvent('milwad@gmail.com'));
+
+        return 'event fired';
+    });
 });
