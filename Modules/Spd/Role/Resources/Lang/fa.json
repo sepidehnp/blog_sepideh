@@ -5,5 +5,7 @@
     "permission categories": "دسترسی دسته بندی ها",
     "permission roles": "دسترسی مقام ها",
     "permission articles": "دسترسی مقالات",
-    "permission authors": "دسترسی نویسنده"
+    "permission authors": "دسترسی نویسنده",
+    "permission comments": "دسترسی نظرات",
+    "permission advertisings" : "دسترسی تبلیغات"
 }

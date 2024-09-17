@@ -1,5 +1,5 @@
 <div class="comments-area">
-    
+
     <h3 class="mb-30">{{ $article->activeComments()->count() }} نظرات</h3>
     @foreach ($article->activeComments()->latest()->get() as $comment)
         <div class="comment-list">
@@ -10,9 +10,7 @@
 
                         </div>
                         <div class="desc">
-                            <p class="comment">
-                                {{ $comment->body }}
-                            </p>
+
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex align-items-center">
                                     <h5>
@@ -24,6 +22,10 @@
                                     <a href="#" class="btn-reply text-uppercase">پاسخ</a>
                                 </div>
                             </div>
+
+                            <p class="comment">
+                                {{ $comment->body }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -36,9 +38,7 @@
                             <img src="{{ $commentReply->user->image() }}" alt="user img">
                             </div>
                             <div class="desc">
-                                <p class="comment">
-                                    {{ $commentReply->body }}
-                                </p>
+
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex align-items-center">
                                         <h5>
@@ -50,6 +50,9 @@
                                         <a href="#" class="btn-reply text-uppercase">پاسخ</a>
                                     </div>
                                 </div>
+                                <p class="comment">
+                                    {{ $commentReply->body }}
+                                </p>
                             </div>
                         </div>
                     </div>

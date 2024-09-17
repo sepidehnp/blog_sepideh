@@ -2,10 +2,11 @@
 
 namespace Spd\Article\Providers;
 
+use Spd\Article\Models\Article;
+use Spd\Role\Models\Permission;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Spd\Article\Models\Article;
 use Spd\Article\Policies\ArticlePolicy;
 
 class ArticleServiceProvider extends ServiceProvider
@@ -16,7 +17,7 @@ class ArticleServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../Resources/Views/', 'Article');
         $this->loadJsonTranslationsFrom(__DIR__ . '/../Resources/Lang/');
 
-        
+
         Route::middleware('web')->namespace('Spd\Article\Http\Controllers')
         ->group(__DIR__ . '/../Routes/article_routes.php');
        Gate::policy(Article::class, ArticlePolicy::class);
@@ -28,6 +29,9 @@ class ArticleServiceProvider extends ServiceProvider
             'url'   => route('articles.index'),
             'title' => 'مقالات',
             'icon'  => 'book',
+            'permissions' => [
+                Permission::PERMISSION_ARTICLES
+            ]
         ]);
     }
 }

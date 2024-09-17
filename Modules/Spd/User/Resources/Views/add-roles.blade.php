@@ -23,7 +23,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="role">مقام</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control @error('role') is-invalid @enderror" name="role">
+                                            <select class="form-control @error('role') is-invalid @enderror" name="role" multiple>
                                                 @foreach ($roles as $role)
                                                     <option value="{{ $role->name }}">{{ $role->name }}</option>
                                                 @endforeach

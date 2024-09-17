@@ -3,11 +3,12 @@
 namespace Spd\User\Providers;
 
 use Spd\User\Models\User;
+use Spd\Role\Models\Permission;
 use Spd\User\Policies\UserPolicy;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,9 @@ class UserServiceProvider extends ServiceProvider
             'url'   => route('users.index'),
             'title' => 'کاربران',
             'icon'  => 'account',
+            'permissions' => [
+                Permission::PERMISSION_USERS
+            ]
         ]);
     }
 }

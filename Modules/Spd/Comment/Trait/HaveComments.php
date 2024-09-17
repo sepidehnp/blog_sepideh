@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasRelationships;
 use Spd\Comment\Models\Comment;
 
 trait HaveComments
-{
+{ 
     use HasRelationships;
 
     public function comments()

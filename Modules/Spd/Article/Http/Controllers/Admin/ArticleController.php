@@ -9,6 +9,7 @@ use Spd\Article\Services\ArticleService;
 use Spd\Article\Repositories\ArticleRepo;
 use Spd\Category\Repositories\CategoryRepo;
 use Spd\Article\Http\Requests\ArticleRequest;
+use Spd\Article\Enums\TypeTextArticleEnum;
 
 class ArticleController extends Controller
 {
@@ -52,8 +53,20 @@ class ArticleController extends Controller
 
         [$imageName, $imagePath] = ShareService::uploadImage($request->file('image'), 'articles');
 
+        if ($request->type_text === TypeTextArticleEnum::TYPE_TEXT_VIDEO->value) {
+            [$videoName, $videoPath] = ShareService::uploadVideo($request->file('video'), 'articles');
+        } else {
+            [$videoName, $videoPath] = null;
+        }
 
-        $this->service->store($request, auth()->id(), $imageName, $imagePath);
+        $this->service->store(
+            $request,
+            auth()->id(),
+            $imageName,
+            $imagePath,
+            $videoName,
+            $videoPath
+        );
 
       //  alert()->success('ساخت مقاله', 'عملیات با موفقیت انجام شد');
       ShareRepo::successMessage('ساخت مقاله');

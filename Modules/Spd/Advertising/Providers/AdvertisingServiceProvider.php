@@ -2,6 +2,7 @@
 
 namespace Spd\Advertising\Providers;
 
+use Spd\Role\Models\Permission;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -28,6 +29,9 @@ class AdvertisingServiceProvider extends ServiceProvider
             'url'   => route('advertisings.index'),
             'title' => 'تبلیغات',
             'icon'  => 'file',
+            'permissions' => [
+                Permission::PERMISSION_ADVERTISINGS
+            ]
         ]);
     }
 }

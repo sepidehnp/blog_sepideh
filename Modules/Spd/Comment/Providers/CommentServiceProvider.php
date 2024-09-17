@@ -3,6 +3,7 @@
 namespace Spd\Comment\Providers;
 
 use Spd\Comment\Models\Comment;
+use Spd\Role\Models\Permission;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -25,6 +26,9 @@ class CommentServiceProvider extends ServiceProvider
             'url'   => route('comments.index'),
             'title' => 'نظرات',
             'icon'  => 'comment',
+            'permissions' => [
+                Permission::PERMISSION_COMMENTS
+            ]
         ]);
     }
 }

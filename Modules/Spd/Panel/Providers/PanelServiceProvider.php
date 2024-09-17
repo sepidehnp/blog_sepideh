@@ -2,11 +2,12 @@
 
 namespace Spd\Panel\Providers;
 
+use Spd\Panel\Models\Panel;
+use Spd\Role\Models\Permission;
+use Spd\Panel\Policies\PanelPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Spd\Panel\Models\Panel;
-use Spd\Panel\Policies\PanelPolicy;
 
 class PanelServiceProvider extends ServiceProvider
 {
@@ -27,6 +28,9 @@ class PanelServiceProvider extends ServiceProvider
                 'url'   => route('panel.index'),
                 'title' => 'پنل کاربری',
                 'icon'  => 'view-dashboard',
+                'permissions' => [
+                    Permission::PERMISSION_PANEL
+                ]
             ]);
         });
 

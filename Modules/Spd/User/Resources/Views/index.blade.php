@@ -34,7 +34,7 @@
                                     <tr class="text-center">
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->email }}</td> 
                                         <td>
                                             <ul style="list-style: none;">
                                                 @foreach ($user->roles as $role)

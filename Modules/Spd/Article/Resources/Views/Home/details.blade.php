@@ -22,6 +22,17 @@
                         <span class="hit-count"><i class="ti-comment ml-5"></i>نظرات {{ $article->activeComments->count() }}</span>
                         <span class="hit-count"><i class="ti-heart ml-5"></i>لایک {{ $article->likers()->count() }}</span>
                         <span class="hit-count"><i class="ti-star ml-5"></i>امتیاز {{ $article->score }}/10</span>
+                        <span class="hit-count"><i class="ti-star ml-5"></i>تعداد بازدید: {{ views($article)->unique()->count() }}</span>
+
+                        @auth
+
+                        <form action="{{ route('articles.like', $article->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn" style="background: #0c9550">
+                                {{ auth()->user()->hasLiked($article) ? 'آن لایک کردن' : 'لایک کردن' }}
+                            </button>
+                        </form>
+                        @endauth
                     </p>
                 </div>
             </div>
@@ -47,6 +58,13 @@
                         <p>
                             {!! $article->body !!}
                         </p>
+
+                        @if ($article->isVideoArticle())
+                        <video width="1000" height="250" controls>
+                            <source src="{{ $article->videoPath }}" type="video/mp4">
+                            مرورگر شما از ویدیو پشتیبانی نمیکنید.
+                        </video>
+                    @endif
 
                         @if (!is_null($adv))
                         <p class="text-center mt-30">
@@ -123,7 +141,7 @@
               <!-- Sidebar -->
                @include('Article::Home.details.sidebar')
             </div>
-           
+
         </div>
     </main>
 @endsection

@@ -25,5 +25,5 @@ class CommentService
         }
 
         return Comment::STATUS_NEW;
-    }
+    } 
 }

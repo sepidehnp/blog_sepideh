@@ -115,6 +115,21 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="type_text">نوع متن مقاله</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control @error('type_text') is-invalid @enderror" name="type_text">
+                                                <option value="" selected>نوع متن مقاله را وارد کنید</option>
+                                                @foreach (\Spd\Article\Enums\TypeTextArticleEnum::cases() as $type)
+                                                    <option value="{{ $type->value }}">@lang($type->value)</option>
+                                                @endforeach
+                                            </select>
+                                            @error('type_text')
+                                            <br>
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="body">توضیحات اصلی</label>
                                         <div class="col-sm-10">
                                             <textarea rows="3" class="form-control @error('body') is-invalid @enderror"
@@ -149,7 +164,19 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-outline-success">ذخیره</button>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label" for="video">ویدیو</label>
+                                        <div class="col-sm-10">
+                                            <input type="file" class="form-control @error('video') is-invalid @enderror"
+                                            id="video" name="video">
+                                            @error('video')
+                                                <br>
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <x-panel-button />
                                 </form>
                             </div>
                         </div>

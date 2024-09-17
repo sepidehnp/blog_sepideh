@@ -39,13 +39,7 @@
                                         <td>{{ jdate($comment->created_at)->format('Y-m-d') }}</td>
                                         <td>
                                             <div class="row">
-                                                <form action="{{ route('comments.change.status.inactive', $comment->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('PATCH')
-                                                    <button type="submit" class="btn btn-dark ml-1">
-                                                        <i class="fas fa-minus-circle"></i>
-                                                    </button>
-                                                </form>
+
                                                 <form action="{{ route('comments.change.status.active', $comment->id) }}" method="POST">
                                                     @csrf
                                                     @method('PATCH')
@@ -53,6 +47,15 @@
                                                         <i class="fas fa-check"></i>
                                                     </button>
                                                 </form>
+
+                                                <form action="{{ route('comments.change.status.inactive', $comment->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <button type="submit" class="btn btn-dark ml-1">
+                                                        <i class="fas fa-minus-circle"></i>
+                                                    </button>
+                                                </form>
+
                                                 <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')

@@ -8,23 +8,26 @@
         "php": "^8.0.2",
         "barryvdh/laravel-debugbar": "^3.13",
         "cyrildewit/eloquent-viewable": "^7.0",
+        "doctrine/dbal": "^3.0",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^9.19",
-        "laravel/sanctum": "^3.0",
+        "laravel/framework": "^10.0",
+        "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.7",
+        "milwad/laravel-validate": "^1.8",
         "morilog/jalali": "^3.4",
+        "opcodesio/log-viewer": "^3.11",
         "overtrue/laravel-like": "^5.3",
         "realrashid/sweet-alert": "^7.2",
-        "spatie/laravel-permission": "^6.9"
+        "spatie/laravel-permission": "^5.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.0",
+        "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -42,7 +45,10 @@
             "Spd\\Share\\": "Modules/Spd/Share/",
             "Spd\\Advertising\\": "Modules/Spd/Advertising/"
 
-        }
+        },
+        "files": [
+            "Modules/Spd/Share/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

@@ -8,7 +8,7 @@ use File;
 
 class ArticleService
 {
-    public function store($request, $user_id, $imageName, $imagePath)
+    public function store($request, $user_id, $imageName, $imagePath, string|null $videoName, string|null $videoPath)
     {
         return Article::query()->create([
             'user_id' => $user_id,
@@ -24,10 +24,13 @@ class ArticleService
             'body' => $request->body,
             'keywords' => $request->keywords,
             'description' => $request->description,
+            'type_text' => $request->type_text,
+            'videoName' => $videoName,
+            'videoPath' => $videoPath,
         ]);
     }
 
-    public function update($request, $id, $imageName, $imagePath)
+    public function update($request, $id, $imageName, $imagePath, string|null $videoName, string|null $videoPath)
     {
         return Article::query()->whereId($id)->update([
             'category_id' => $request->category_id,
@@ -42,10 +45,13 @@ class ArticleService
             'body' => $request->body,
             'keywords' => $request->keywords,
             'description' => $request->description,
+            'type_text' => $request->type_text,
+            'videoName' => $videoName,
+            'videoPath' => $videoPath,
         ]);
     }
 
-   
+
 
     public function deleteImage($article)
     {

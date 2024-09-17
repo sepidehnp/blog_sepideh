@@ -8,6 +8,7 @@ use Spd\Category\Models\Category;
 use Spd\Comment\Trait\HaveComments;
 use Illuminate\Database\Eloquent\Model;
 use Overtrue\LaravelLike\Traits\Likeable;
+use Spd\Article\Enums\TypeTextArticleEnum;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,7 +21,7 @@ class Article extends Model implements Viewable
 
     protected $fillable = [
         'user_id', 'category_id', 'title', 'slug', 'time_to_read', 'imageName', 'imagePath', 'score', 'status',
-        'type', 'body','keywords', 'description',
+        'type', 'body','keywords', 'description', 'type_text', 'videoName', 'videoPath'
     ];
 
     public const STATUS_ACTIVE = 'active';
@@ -57,6 +58,12 @@ class Article extends Model implements Viewable
     {
         return route('articles.details', $this->slug);
     }
+
+    public function isVideoArticle(): bool
+    {
+        return $this->type_text === TypeTextArticleEnum::TYPE_TEXT_VIDEO->value && ! is_null($this->videoName);
+    }
+
 
     //    public function getCommentCount()
 //    {

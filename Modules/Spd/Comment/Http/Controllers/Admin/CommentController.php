@@ -31,7 +31,7 @@ class CommentController extends Controller
         toast('حذف کامنت','success');
         return to_route('comments.index');
     }
-
+ 
     public function active($id)
     {
         $this->authorize('manage', $this->class);

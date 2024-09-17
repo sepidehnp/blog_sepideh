@@ -2,10 +2,11 @@
 
 namespace Spd\Category\Providers;
 
+use Spd\Role\Models\Permission;
+use Spd\Category\Models\Category;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Spd\Category\Models\Category;
 use Spd\Category\Policies\CategoryPolicy;
 
 class CategoryServiceProvider extends ServiceProvider
@@ -26,6 +27,7 @@ class CategoryServiceProvider extends ServiceProvider
             'url'   => route('categories.index'),
             'title' => 'دسته بندی ها',
             'icon'  => 'folder-open-outline',
+            'permissions' => [Permission::PERMISSION_CATEGORIES]
         ]);
     }
 }
